@@ -1,0 +1,10 @@
+div{
+	height: 100px;
+	overflow: auto;
+}
+ul {
+  list-style-type: none; 
+}
+.innerList{
+  display: none;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>
+      CheckBox Child Exercise
+    </title>
+    <link rel="stylesheet" href="checkbox_child.css" type="text/css">
+  </head>  
+  <body>
+    <div>
+      <ul>
+        <li>
+          <input type = "checkbox" class ="colorCheckbox" onclick = "showInnerCheckbox(this)">
+          <label class="labelColor">Color</label>
+          <ul class="innerList" >
+            <li>
+              <input type = "checkbox" class ="colorCheckbox" >
+              <label class="labelColor">Red</label>
+            </li>
+            <li>
+              <input type = "checkbox" class ="colorCheckbox" >
+              <label class="labelColor">Green</label>
+            </li>
+            <li>
+              <input type = "checkbox" class ="colorCheckbox" >
+              <label class="labelColor">Blue</label>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <input type = "checkbox" class="moviesCheckbox" onclick = "showInnerCheckbox(this)">
+          <label class="labelMovies">Movies</label>
+          <ul class="innerList">
+            <li>
+              <input type = "checkbox" class = "moviesCheckbox" >
+              <label class="labelMovies">Sir</label>
+            </li>
+            <li>
+              <input type = "checkbox" class = "moviesCheckbox" >
+              <label class="labelMovies">Dar</label>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <input type = "checkbox" class="drinksCheckbox" onclick = "showInnerCheckbox(this)">
+          <label class="labelDrinks">Drinks</label>
+          <ul class="innerList">
+            <li>
+              <input type = "checkbox" class = "drinksCheckbox" >
+              <label class="labelDrinks">Coke</label>
+            </li>
+            <li>
+              <input type = "checkbox" class = "drinksCheckbox" >
+              <label class="labelDrinks">Pepsi</label>
+            </li>
+            <li>
+              <input type = "checkbox" class = "drinksCheckbox">
+              <label class="labelDrinks">Dew</label>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <input type = "checkbox" class="bikesCheckbox" onchange="showInnerCheckbox(this)">
+          <label class="labelBikes">Bikes</label>
+          <ul class="innerList">
+            <li>
+              <input type = "checkbox" class = "bikesCheckbox">
+              <label class="labelBikes">Pulsar</label>
+            </li>
+            <li>
+              <input type = "checkbox" class = "bikesCheckbox">
+              <label class="labelBikes">Karizma</label>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <script type = "text/javascript" src = "checkbox_child.js">
+    </script>
+  </body>
+</html>
