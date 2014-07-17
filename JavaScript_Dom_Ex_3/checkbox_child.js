@@ -1,23 +1,26 @@
-function showInnerCheckbox(sourceCheckbox) {
-  var parentNodeItem = sourceCheckbox.parentNode;
-  var childNodeItems = parentNodeItem.childNodes;
-  for(var i in childNodeItems) {
-    // getting the list of inner block and displaying it
-    if(childNodeItems[i].className == "innerList") {
-      if(sourceCheckbox.checked == true) {
-        childNodeItems[i].style.display = "block";
-        sourceCheckbox.scrollIntoView(true);
-      }
-      else if(sourceCheckbox.checked == false) {
-        childNodeItems[i].style.display = "none";
-        deselectInnerCheckbox(sourceCheckbox);
-      }
+function ManipulateCheckBox(){
+  this.init();
+}
+ManipulateCheckBox.prototype = {
+  init : function() {
+    this.innerList = document.getElementsByClassName("innerList");
+  }
+  deselectInnerChk : function() {
+
+  } 
+  showInnerChk : function() {
+
+  }
+  bindEvents : function() {
+    var _this = this;
+    for(var i in this.innerList) {
+      this.innerList[i].addEventListener("click",function(){
+        _this.showInnerChk(this);
+      });  
     }
   }
 }
-function deselectInnerCheckbox(sourceCheckbox) {
-  var innerCheckbox = document.getElementsByClassName(sourceCheckbox.className);
-  for(var i in innerCheckbox) {
-    innerCheckbox[i].checked = false;
-  }
+function createManipulator() {
+  var manipulator = new manipulator();
+  manipulator.bindEvents();
 }
