@@ -7,7 +7,8 @@ ManipulateCheckBox.prototype = {
     this.parentNodeItem = "";
     this.childNodeItems = "";
   },
-  deselectInnerChk : function() {
+  deselectInnerChk : function(sourceCheckbox) {
+    
 
   }, 
   showInnerChk : function(sourceCheckbox) {
@@ -23,7 +24,7 @@ ManipulateCheckBox.prototype = {
         }
         else {
           this.childNodeItems[i].style.display = "none";
-          deselectInnerCheckbox(sourceCheckbox);
+          this.deselectInnerCheckbox(sourceCheckbox);
         }
       }
     }
