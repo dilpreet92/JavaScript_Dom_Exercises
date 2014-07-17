@@ -13,7 +13,7 @@ ManipulateCheckBox.prototype = {
   showInnerChk : function(sourceCheckbox) {
     console.log("here");
     this.parentNodeItem = sourceCheckbox.parentNode;
-    this.childNodeItems = parentNode.childNodes;
+    this.childNodeItems = this.parentNodeItem.childNodes;
     for(var i in this.childNodeItems) {
       // getting the list of inner block and displaying it
       if(this.childNodeItems[i].className == "innerList") {
@@ -32,10 +32,12 @@ ManipulateCheckBox.prototype = {
     var _this = this;
     var manipulateCheckbox = "";
     for(var i in this.outerCheckbox) {
-      manipulateCheckbox = this.outerCheckbox[i];
-      manipulateCheckbox.addEventListener("click",function(){
+      if (this.outerCheckbox[i].type == "checkbox") {
+        manipulateCheckbox = this.outerCheckbox[i];
+        manipulateCheckbox.addEventListener("click",function() {
         _this.showInnerChk(this);
-      });  
+        });
+      }  
     }
   }
 }
