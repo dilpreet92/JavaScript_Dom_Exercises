@@ -18,7 +18,7 @@ CheckboxManipulator.prototype = {
       if(this.count > 3) {
         triggeredCheckbox.checked = false;
         this.count--;
-        alert("Only 3 can be Selected"+ "\n" + "You Have Already Selected " + this.values);
+        alert("Only 3 can be Selected"+ "\n" + "You Have Already Selected " + this.values.toString());
       }
       else {
         this.values.push(triggeredCheckbox.value);
@@ -26,7 +26,8 @@ CheckboxManipulator.prototype = {
     }
     else if(triggeredCheckbox.checked == false) {
       this.count-- ;
-      this.values.pop(triggeredCheckbox.value);
+      var index = this.values.indexOf(triggeredCheckbox.value);
+      this.values.splice(index , 1);
     }
   },
   selectNone : function() {
@@ -38,12 +39,13 @@ CheckboxManipulator.prototype = {
   },
   bindEvents: function(){
     var _this = this; 
+    var manipulateCheckbox = "";
     this.selectNoneChk.addEventListener("click",function(){
       _this.selectNone();
       });
     for(var i in this.checkboxNames) {
     if (this.checkboxNames[i].type == "checkbox") {
-      var manipulateCheckbox = this.checkboxNames[i];
+      manipulateCheckbox = this.checkboxNames[i];
       manipulateCheckbox.addEventListener("click",function(){
         _this.toggle(this);
         });  
