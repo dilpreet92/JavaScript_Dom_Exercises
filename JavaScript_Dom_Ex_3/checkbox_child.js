@@ -1,5 +1,4 @@
 function ManipulateCheckBox(){
-  this.outerCheckbox = outerCheckboxElements;
   this.parentNodeItem = "";
   this.childNodeItems = "";
   this.innerCheckboxList = "";
@@ -32,9 +31,9 @@ ManipulateCheckBox.prototype = {
   bindEvents : function() {
     var _this = this;
     var manipulateCheckbox = "";
-    for(var i in this.outerCheckbox) {
-      if (this.outerCheckbox[i].type == "checkbox") {
-        manipulateCheckbox = this.outerCheckbox[i];
+    for(var i in outerCheckboxElements) {
+      if (outerCheckboxElements[i].type == "checkbox") {
+        manipulateCheckbox = outerCheckboxElements[i];
         manipulateCheckbox.addEventListener("click",function() {
         _this.showInnerChk(this);
         });

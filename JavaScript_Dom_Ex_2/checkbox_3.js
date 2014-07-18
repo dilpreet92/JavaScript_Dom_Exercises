@@ -1,12 +1,11 @@
 function CheckboxManipulator() {
-  this.selectNoneChk = selectNoneElement;
   this.checkboxNames = checkboxElements;
   this.count = 0;
   this.values = new Array();
 }
 CheckboxManipulator.prototype = {
   toggle : function(triggeredCheckbox) {
-    this.selectNoneChk.checked = false;
+    selectNoneElement.checked = false;
     this.countNum(triggeredCheckbox);
   },
   countNum : function(triggeredCheckbox) {
@@ -37,7 +36,7 @@ CheckboxManipulator.prototype = {
   bindEvents: function(){
     var _this = this; 
     var manipulateCheckbox = "";
-    this.selectNoneChk.addEventListener("click",function(){
+    selectNoneElement.addEventListener("click",function(){
       _this.selectNone();
       });
     for(var i in this.checkboxNames) {
