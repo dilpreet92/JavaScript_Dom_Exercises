@@ -1,9 +1,9 @@
-function ManipulateCheckBox(){
+function CheckBoxVisiblity(){
   this.parentNodeItem = "";
-  this.childNodeItems = "";
+  this.childList = "";
   this.innerCheckboxList = "";
 }
-ManipulateCheckBox.prototype = {
+CheckBoxVisiblity.prototype = {
   deselectInnerChk : function(sourceCheckbox,sourceInnerList) {
     this.innerCheckboxList = sourceInnerList.getElementsByClassName("innerCheckbox");
     for(var i in this.innerCheckboxList) {
@@ -11,21 +11,15 @@ ManipulateCheckBox.prototype = {
     }
   }, 
   showInnerChk : function(sourceCheckbox) {
-    console.log("here");
     this.parentNodeItem = sourceCheckbox.parentNode;
-    this.childNodeItems = this.parentNodeItem.childNodes;
-    for(var i in this.childNodeItems) {
-      // getting the list of inner block and displaying it
-      if(this.childNodeItems[i].className == "innerList") {
-        if(sourceCheckbox.checked) {
-          this.childNodeItems[i].style.display = "block";
-          sourceCheckbox.scrollIntoView(true);
-        }
-        else {
-          this.childNodeItems[i].style.display = "none";
-          this.deselectInnerChk(sourceCheckbox,this.childNodeItems[i]);
-        }
-      }
+    this.childList = this.parentNodeItem.getElementsByClassName("innerList").item(0);
+    if(sourceCheckbox.checked) {
+      this.childList.style.display = "block";
+      sourceCheckbox.scrollIntoView(true);
+    }
+    else {
+      this.childList.style.display = "none";
+      this.deselectInnerChk(sourceCheckbox,this.childList);
     }
   },
   bindEvents : function() {
@@ -42,7 +36,7 @@ ManipulateCheckBox.prototype = {
   }
 }
 function createManipulator() {
-  var manipulator = new ManipulateCheckBox();
+  var manipulator = new CheckBoxVisiblity();
   manipulator.bindEvents();
 }
 var outerCheckboxElements = document.getElementsByClassName("outerCheckbox");
