@@ -1,18 +1,18 @@
-function CheckBoxVisiblity() {
+function CheckEvent() {
   this.parentNodeItem = "";
   this.childList = "";
   this.innerCheckboxList = "";
 };
 
-CheckBoxVisiblity.prototype.deselectInnerChk = function(sourceCheckbox,sourceInnerList) {
+CheckEvent.prototype.deselectInnerChk = function(sourceCheckbox,sourceInnerList) {
   this.innerCheckboxList = sourceInnerList.getElementsByClassName("innerCheckbox");
   for(var i in this.innerCheckboxList) {
       this.innerCheckboxList[i].checked = false;
   }
 };
 
-CheckBoxVisiblity.prototype.showInnerChk = function(sourceCheckbox) {
-  this.parentNodeItem = sourceCheckbox.parentNode;
+CheckEvent.prototype.showInnerChk = function(sourceCheckbox) {
+  this.parentNodeItem = document.getElementsByClassName(sourceCheckbox.name).item(0);
   this.childList = this.parentNodeItem.getElementsByClassName("innerList").item(0);
   if(sourceCheckbox.checked) {
     this.childList.style.display = "block";
@@ -24,7 +24,7 @@ CheckBoxVisiblity.prototype.showInnerChk = function(sourceCheckbox) {
   }
 };
 
-CheckBoxVisiblity.prototype.bindEvents = function() {
+CheckEvent.prototype.bindEvents = function() {
   var _this = this;
   var manipulateCheckbox = "";
   for(var i in outerCheckboxElements) {
@@ -38,8 +38,7 @@ CheckBoxVisiblity.prototype.bindEvents = function() {
 };
 
 function createManipulator() {
-  var manipulator = new CheckBoxVisiblity();
-  manipulator.bindEvents();
+  new CheckEvent().bindEvents();
 }
 var outerCheckboxElements = document.getElementsByClassName("outerCheckbox");
 window.onload = createManipulator;
