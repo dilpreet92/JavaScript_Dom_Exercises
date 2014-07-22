@@ -2,6 +2,7 @@ function CheckEvent() {
   this.parentNodeItem = "";
   this.childList = "";
   this.innerCheckboxList = "";
+  this.outerCheckboxElements = document.getElementsByClassName("outerCheckbox");
 };
 
 CheckEvent.prototype.deselectInnerChk = function(sourceCheckbox,sourceInnerList) {
@@ -27,9 +28,9 @@ CheckEvent.prototype.showInnerChk = function(sourceCheckbox) {
 CheckEvent.prototype.bindEvents = function() {
   var _this = this;
   var manipulateCheckbox = "";
-  for(var i in outerCheckboxElements) {
-    if (outerCheckboxElements[i].type == "checkbox") {
-      manipulateCheckbox = outerCheckboxElements[i];
+  for(var i in this.outerCheckboxElements) {
+    if (this.outerCheckboxElements[i].type == "checkbox") {
+      manipulateCheckbox = this.outerCheckboxElements[i];
       manipulateCheckbox.addEventListener("click",function() {
       _this.showInnerChk(this);
       });
@@ -40,5 +41,4 @@ CheckEvent.prototype.bindEvents = function() {
 function createManipulator() {
   new CheckEvent().bindEvents();
 }
-var outerCheckboxElements = document.getElementsByClassName("outerCheckbox");
 window.onload = createManipulator;
