@@ -1,10 +1,11 @@
-function CheckboxManipulator() {
-  this.checkboxNames = checkboxElements;
+function CheckboxManipulator(getElements) {
+  this.selectNoneElem = getElements.selectNoneElement;
+  this.checkboxNames = getElements.checkboxElements;
   this.count = 0;
   this.values = new Array();
 };
 CheckboxManipulator.prototype.toggle = function(triggeredCheckbox) {
-  selectNoneElement.checked = false;
+  this.selectNoneElem.checked = false;
   this.countNum(triggeredCheckbox);
 };
 CheckboxManipulator.prototype.countNum = function(triggeredCheckbox) {
@@ -35,7 +36,7 @@ CheckboxManipulator.prototype.selectNone = function() {
 CheckboxManipulator.prototype.bindEvents = function(){
   var _this = this; 
   var manipulateCheckbox = "";
-  selectNoneElement.addEventListener("click",function(){
+  this.selectNoneElem.addEventListener("click",function(){
     _this.selectNone();
     });
   for(var i in this.checkboxNames) {
@@ -47,10 +48,13 @@ CheckboxManipulator.prototype.bindEvents = function(){
     }
   }
 };     
-function createCheckboxManipulator() {
-  var manipulator = new CheckboxManipulator();
+function createCheckboxManipulator(getElements) {
+  var manipulator = new CheckboxManipulator(getElements);
   manipulator.bindEvents();
 }
-var selectNoneElement = document.getElementById("selectNone"),
-    checkboxElements = document.getElementsByClassName("chkbox");
-window.onload = createCheckboxManipulator();
+
+var elements = {
+  "selectNoneElement" : document.getElementById("selectNone"),
+  "checkboxElements" : document.getElementsByClassName("chkbox")
+}
+window.onload = createCheckboxManipulator(elements);
